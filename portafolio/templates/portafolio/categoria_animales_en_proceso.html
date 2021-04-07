@@ -1,0 +1,56 @@
+{% extends 'portafolio/base.html' %}
+{% load i18n %}
+{% block title %} Gallos {% endblock title %}
+{% block content %}
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                        <h4 class="title">Animales en proceso de cuido</h4>
+                <!-- /section title -->
+
+                <!-- Products tab & slick -->
+                {% if animales_en_proceso %}
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <!-- tab -->
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-1">
+                                        <!-- product -->
+                                        {% for pollo in animales_en_proceso %}
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="{{ pollo.foto.url }}" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">Categoría: {{ pollo.categoria }}</p>
+                                                <h4 class="product-price">Código: {{ pollo.nombre_gallo }}</h4>
+                                                <h5 class="product-old">Padre: {{pollo.padre}}
+                                                </h5>
+                                                <h5 class="product-old">Madre: {{pollo.madre}}</h5>
+                                                <div class="product-btns">
+                                                    <button class="quick-view"><i class="fa fa-eye"></i><span
+                                                            class="tooltipp">quick view</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div id="slick-nav-1" class="products-slick-nav"> <span class="product-price"> Atrás - Siguiente </span> </div>
+                                </div>
+                                <!-- /tab -->
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- Products tab & slick -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+{% endblock content %}
